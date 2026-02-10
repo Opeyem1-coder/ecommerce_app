@@ -69,7 +69,11 @@ class MyApp extends StatelessWidget {
           color: Colors.white,
         ),
       ),
-      home: const LoginPage(),
+      home: Consumer<AuthProvider>(
+        builder: (context, authProvider, _) {
+          return authProvider.isAuthenticated ? const HomePage() : const LoginPage();
+        },
+      ),
     );
   }
 }
